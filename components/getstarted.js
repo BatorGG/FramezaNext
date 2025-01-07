@@ -14,7 +14,13 @@ const GetStarted = () => {
     const [href, setHref] = useState("/login");
 
     useEffect(() => {
-        const token = localStorage.getItem('jwt');
+        let token
+        if (typeof window !== 'undefined') {
+            token = localStorage.getItem('jwt');
+        }
+        else {
+            token = null
+        }
         const decoded = decodeJWT(token);
         console.log(decoded)
         console.log(pathname)
