@@ -18,7 +18,6 @@ export default function DashboardPage() {
         }
       }, []);
 
-    const token = localStorage.getItem('jwt');
     
 
     
