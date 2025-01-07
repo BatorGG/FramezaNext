@@ -8,7 +8,13 @@ import { decodeJWT } from '@/lib/decodejwt';
 export default function DashboardPage() {
 
     useEffect(() => {
-        const token = localStorage.getItem('jwt');
+        let token
+        if (typeof window !== 'undefined') {
+            token = localStorage.getItem('jwt');
+        }
+        else {
+            token = null
+        }
         const decoded = decodeJWT(token);
         
         if (!decoded) {
