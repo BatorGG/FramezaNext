@@ -43,7 +43,10 @@ export default function Login() {
             if (data.success) {
                 // Handle successful login
                 console.log("Login successful:", data.token);
-                localStorage.setItem('jwt', data.token);
+                if (typeof window !== 'undefined') {
+                    localStorage.setItem('jwt', data.token);
+                }
+                
                 router.push('/dashboard');
 
             } else {
